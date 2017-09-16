@@ -22,6 +22,6 @@ alert("hello!");
 }
 
 //when page is loaded.
-$(document).ready(function () {
+$(document).ready(function() {
     loadPage();
-}
+});
