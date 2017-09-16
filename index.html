@@ -20,19 +20,33 @@
 
             </div>
 
-            <!--------------------score section 2 rows -->
+            <!--------------------score section 2 columns -->
             <div  class= "row">
-                <div id="correct" class ="col-4">
+                <div id="correct" class ="col-6">
+                    correct: 0
+                </div>
+
+                <div id="wrong" class ="col-6">
+                    wrong: 0
+                </div>
+
+            </div>
+
+            <!-------------------- time progress bar -->
+            <div class="row ">
+                <div class="col-4"></div>
+
+                    <div class="col-4">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width:
+                            25%"
+                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
 
                 </div>
 
-                <div id="wrong" class ="col-4">
-
-                </div>
-
-                <div id ="time" class ="col-4">
-
-                </div>
+                <div class="col-4"></div>
 
             </div>
 
@@ -48,8 +62,13 @@
             </div>
 
             <!--------------------Quiz section -->
-            <div id= "quizSection" class= "row">  </div>
+            <div id= "quizSection" class= "row">
 
+
+
+
+
+            </div>
 
 
         </div><!--END of container-->
