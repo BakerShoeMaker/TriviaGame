@@ -1,0 +1,41 @@
+
+body{
+
+    background-color: #4b74c7;
+
+}
+
+
+.titleText{
+
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 80px;
+    color: white;
+    border: dotted;
+    text-align: center;
+}
+
+.gameText{
+    font-family: 'Six Caps', sans-serif;
+
+}
+
+
+.buttonProperties{
+    background-color: #5941ff;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-family: 'Tenor Sans', sans-serif;
+    border-radius: 8px;
+    width: 120px;
+
+}
+.buttonProperties:hover{
+    transform: scale(1.05);
+/*transition: all .2s ease-in-out;*/
+

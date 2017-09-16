@@ -3,7 +3,7 @@
     <head>
     <title></title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Anton|Fontdiner+Swanky" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Six+Caps|Tenor+Sans" rel="stylesheet">
         <script src="https://use.fontawesome.com/0f97643179.js"></script>
         <link rel="stylesheet" href="assets/css/reset.css">
         <script src="http://d309knd7es5f10.cloudfront.net/zim_6.1.1.js"></script>
@@ -13,46 +13,53 @@
 
 
     <body>
-    <div class = "container">
-        <!-------------------- title section -->
-        <div id="title" class="row">
-
-        </div>
-
-        <!--------------------score section -->
-        <div  class= "row">
-            <div id="score" class ="col-6">
-
-            </div>
-            <div id ="time" class ="col-6">
+        <div class = "container">
+            <!-------------------- title section 1 row -->
+            <div  class="row titleText">
+                <div id="title" class = " m-2 p-1">Trivia Game</div>
 
             </div>
 
-        </div>
+            <!--------------------score section 2 rows -->
+            <div  class= "row">
+                <div id="correct" class ="col-4">
 
-        <!-------------------- Message section -->
-        <div id= "messageSection" class= "row">
+                </div>
 
-            <div id="message" class ="col-6">
+                <div id="wrong" class ="col-4">
+
+                </div>
+
+                <div id ="time" class ="col-4">
+
+                </div>
 
             </div>
-            <div id ="time" class ="col-3">
+
+            <!-------------------- Message section - 1 row -->
+            <div id= "messageSection" class= "row text-center">
+
+                <div id="message" class ="col">
+                    <button id="buttonID" type="button" class="buttonProperties">  Start </button>
+                </div>
+
+
 
             </div>
 
-            <div class ="col-3"></div><!-- empty column-->
-
-        </div>
-
-        <!--------------------Quiz section -->
-        <div id= "quizSection" class= "row">  </div>
+            <!--------------------Quiz section -->
+            <div id= "quizSection" class= "row">  </div>
 
 
 
-    </div><!--END of container-->
+        </div><!--END of container-->
 
     </body>
     <script src="assets/javascript/game.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
 
 
 
