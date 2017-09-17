@@ -4,15 +4,17 @@ body{
     background-color: #4b74c7;
 
 }
-
+h1{
+    width: 100%;
+}
 
 .titleText{
 
     font-family: 'Tenor Sans', sans-serif;
     font-size: 80px;
     color: white;
-    border: dotted;
     text-align: center;
+    /*margin:0 auto;*/
 }
 
 .gameText{
@@ -37,7 +39,8 @@ body{
     width: 120px;
 
 }
-.buttonProperties:hover{
+.buttonProperties:hover {
     transform: scale(1.05);
+}
 /*transition: all .2s ease-in-out;*/
 
