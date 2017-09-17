@@ -21,9 +21,13 @@ h1{
     font-family: 'Tenor Sans', sans-serif;
     font-size: 25px;
     color: white;
-
 }
-
+.gameTimerText{
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
 
 .buttonProperties{
     background-color: #5941ff;
