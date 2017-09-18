@@ -70,10 +70,10 @@ function startGame(){
     $("#Time").html(+time);
 
     $("#Question").html(tQuestions[questionCounter].question);
-    $("#A").html(tQuestions[questionCounter].answers.a);
-    $("#B").html(tQuestions[questionCounter].answers.b);
-    $("#C").html(tQuestions[questionCounter].answers.c);
-    $("#D").html(tQuestions[questionCounter].answers.d);
+    $("#A").html("<input type='radio' name='a' value='a'>" +"   " +tQuestions[questionCounter].answers.a) + "</input>";
+    $("#B").html("<input type = 'radio' name='b' value ='b'>" +"   " +tQuestions[questionCounter].answers.b)+ "</input>";
+    $("#C").html("<input type = 'radio' name='c' value ='c'>" +"   " +tQuestions[questionCounter].answers.c) +"</input>";
+    $("#D").html("<input type = 'radio' name='d' value ='d'>" +"   " +tQuestions[questionCounter].answers.d)+"</input>";
 }
 
 
