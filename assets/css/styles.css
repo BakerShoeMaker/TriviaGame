@@ -29,6 +29,13 @@ h1{
     text-align: center;
 }
 
+.gameTimerTextQuestion{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
 .buttonProperties{
     background-color: #5941ff;
     border: none;

@@ -1,4 +1,5 @@
-var score = 0, correct = 0, wrong =0, time = 10;
+var score = 0, correct = 0, wrong =0, time = 10,
+    questionCounter= 0; //counts the questions.
 
 
 
@@ -68,11 +69,11 @@ function startGame(){
     $("#Wrong").html("Wrong: " +wrong);
     $("#Time").html(+time);
 
-    $("#Question").html(tQuestions[0].question);
-    $("#A").html(tQuestions[0].answers.a);
-    $("#B").html(tQuestions[0].answers.b);
-    $("#C").html(tQuestions[0].answers.c);
-    $("#D").html(tQuestions[0].answers.d);
+    $("#Question").html(tQuestions[questionCounter].question);
+    $("#A").html(tQuestions[questionCounter].answers.a);
+    $("#B").html(tQuestions[questionCounter].answers.b);
+    $("#C").html(tQuestions[questionCounter].answers.c);
+    $("#D").html(tQuestions[questionCounter].answers.d);
 }
 
 
