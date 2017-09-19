@@ -21,7 +21,7 @@ var tQuestions = [
             c: "c++",
             d: "python"
         },
-        correctAnswer: "a"
+        correctAnswer: "javascript"
     },
     {question: "Where is the $5.00 parking lot?",
         answers: {
@@ -30,7 +30,7 @@ var tQuestions = [
             c: "Next to Whole Foods",
             d: "Right next to Subway"
         },
-        correctAnswer: "b"
+        correctAnswer: "In the open air parking lot west of the classroom"
     }
 ];
 
@@ -67,7 +67,6 @@ function startTimer(){
 //***************** TIMER END ***********************
 
 function loadPage(){
-
     //$("#quizSection").html("Let's get started");
     $("#ButtonID").click(function () {
         $(this).remove();
@@ -78,13 +77,15 @@ function loadPage(){
 
 function checkAnswer(){
     $(".answer").off(); //turn off ability to click
-    questionCounter ++ // add questionCounter.
+
+    console.log(answerArray +" and" +tQuestions[questionCounter].correctAnswer);
     //if correct
     if(answerArray == tQuestions[questionCounter].correctAnswer){
         console.log("Yes, you picked the right answer!");
         $(".answer").html("");//Clear the answer fields
         $("#MessageSection").html("Yes, that's correct!"); //add correct message
         //add next button for next question
+        questionCounter ++;// add questionCounter.
     }
     else{
         //if incorrect (keep going)
@@ -93,9 +94,6 @@ function checkAnswer(){
         //add next button for next question
                 //serveQuestion(); after button is clicked.
     }
-
-
-
 }
 
 //Add submit buttton, push all clicks into an array, to check corrrect answer get the last item pushed into the array.
@@ -128,6 +126,12 @@ function serveQuestion(){
         answerArray.push(tQuestions[questionCounter].answers.d);
         checkAnswer();
         }).html("<input type = 'radio' name='d' value ='d'>" +"   " +tQuestions[questionCounter].answers.d)+"</input>";
+
+    $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Start </button>").click(function(){
+        console.log("You clicked the submit button!");
+        checkAnswer();
+    });
+
     preTimer();
 }
 
