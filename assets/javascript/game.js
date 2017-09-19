@@ -82,21 +82,37 @@ function checkAnswer(){
     //if correct
     if(answerArray == tQuestions[questionCounter].correctAnswer){
         console.log("Yes, you picked the right answer!");
-        $(".answer").html("");//Clear the answer fields
-        $("#MessageSection").html("Yes, that's correct!"); //add correct message
-        //add next button for next question
+        $("#MessageText").html("<i class= 'fa fa-thumbs-o-up messageTextWin' aria-hidden='true'></i>"+"  Yes, that's" +
+            " correct!"); //add correct message
+
         questionCounter ++;// add questionCounter.
+        correct ++;
+        time = 10;
+        //add next button for next question
+        $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Next </button>").click(function(){
+            console.log("You clicked the submit button!");
+            serveQuestion();
+        });
     }
     else{
         //if incorrect (keep going)
         console.log("That's the wrong answer");
-        //add inccorrect message
-        //add next button for next question
-                //serveQuestion(); after button is clicked.
+        $("#Time").html("");
+        //add incorrect message
+        $("#MessageText").html("<i class= 'fa fa-thumbs-o-down messageTextWin' aria-hidden='true'></i>" + "  Sorry" +
+            " the answer is " +tQuestions[questionCounter].correctAnswer);
+        questionCounter ++;
+        wrong ++;
+        //add next button and server next question
+        $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Next </button>").click(function(){
+            console.log("You clicked the submit button!");
+            serveQuestion();
+        });
+
     }
 }
 
-//Add submit buttton, push all clicks into an array, to check corrrect answer get the last item pushed into the array.
+//Add submit button, push all clicks into an array, to check correct answer get the last item pushed into the array.
 
 //Displays the questions/answers
 function serveQuestion(){
@@ -105,29 +121,29 @@ function serveQuestion(){
     $("#Correct").html("Correct: " +correct);
     $("#Wrong").html("Wrong: " +wrong);
     $("#Question").html(tQuestions[questionCounter].question);
-
+    $("#MessageText").html("");
     $("#A").click(function(){
         answerArray.push(tQuestions[questionCounter].answers.a);
-        checkAnswer();
+        //checkAnswer();
         }).html("<input type='radio' name='a' value='a'>" +"   " +tQuestions[questionCounter].answers.a) + "</input>";
 
     $("#B").click( function () {
             answerArray.push(tQuestions[questionCounter].answers.b);
-            checkAnswer();
+            //checkAnswer();
     }
     ).html("<input type = 'radio' name='b' value ='b'>" +"   " +tQuestions[questionCounter].answers.b)+ "</input>";
 
     $("#C").click(function(){
         answerArray.push(tQuestions[questionCounter].answers.c);
-        checkAnswer();
+        //checkAnswer();
         }).html("<input type = 'radio' name='c' value ='c'>" +"   " +tQuestions[questionCounter].answers.c) +"</input>";
 
     $("#D").click(function () {
         answerArray.push(tQuestions[questionCounter].answers.d);
-        checkAnswer();
+        //checkAnswer();
         }).html("<input type = 'radio' name='d' value ='d'>" +"   " +tQuestions[questionCounter].answers.d)+"</input>";
 
-    $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Start </button>").click(function(){
+    $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Submit </button>").click(function(){
         console.log("You clicked the submit button!");
         checkAnswer();
     });
