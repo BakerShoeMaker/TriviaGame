@@ -1,5 +1,6 @@
 var score = 0, correct = 0, wrong =0, time = 10,
     questionCounter= 0; //counts the questions.
+
 var myTimer;
 var answerArray = [];
 
@@ -78,20 +79,28 @@ function loadPage(){
 function checkAnswer(){
     $(".answer").off(); //turn off ability to click
 
-    console.log(answerArray +" and" +tQuestions[questionCounter].correctAnswer);
     //if correct
     if(answerArray == tQuestions[questionCounter].correctAnswer){
         console.log("Yes, you picked the right answer!");
         $("#MessageText").html("<i class= 'fa fa-thumbs-o-up messageTextWin' aria-hidden='true'></i>"+"  Yes, that's" +
             " correct!"); //add correct message
 
-        questionCounter ++;// add questionCounter.
-        correct ++;
-        time = 10;
+        //time = 10; //reset time
         //add next button for next question
         $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Next </button>").click(function(){
             console.log("You clicked the submit button!");
-            serveQuestion();
+            if(questionCounter > tQuestions.length){
+                //show the results.
+                console.log("Finished!");
+            }
+            else{
+                //show next question
+                console.log("not finished yet!");
+                questionCounter++;
+                serveQuestion();
+                console.log("The question counter is: " +questionCounter);
+            }
+
         });
     }
     else{
@@ -101,23 +110,27 @@ function checkAnswer(){
         //add incorrect message
         $("#MessageText").html("<i class= 'fa fa-thumbs-o-down messageTextWin' aria-hidden='true'></i>" + "  Sorry" +
             " the answer is " +tQuestions[questionCounter].correctAnswer);
-        questionCounter ++;
         wrong ++;
+        time = 10; //reset time
         //add next button and server next question
         $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Next </button>").click(function(){
             console.log("You clicked the submit button!");
+            console.log("The question counter is: " +questionCounter);
+            questionCounter++;
             serveQuestion();
         });
 
     }
+    console.log("Question counter =  " +questionCounter);
 }
 
 //Add submit button, push all clicks into an array, to check correct answer get the last item pushed into the array.
 
 //Displays the questions/answers
 function serveQuestion(){
-    //progressBar();
 
+    //progressBar();
+    console.log(tQuestions.length);
     $("#Correct").html("Correct: " +correct);
     $("#Wrong").html("Wrong: " +wrong);
     $("#Question").html(tQuestions[questionCounter].question);
