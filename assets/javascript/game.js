@@ -49,6 +49,19 @@ function resetAnswerArray(){answerArray = [];}
 function progressBar(){
 
 }
+//Show results
+function showResults(){
+    $(".answer").html(""); //Clear the answers
+    $("#MessageText").html("You have finished the quiz! Here are your results:"); //Show a message.
+    $("#Question").html("Correct: " +correct + "<br>"
+            + "Incorrect " +wrong + "<br>"
+            + "% correct " + correct/(tQuestions.length -1)); // Show results.
+    $("#submitbutton").html("<button type='button' class='buttonProperties'>Start Over</button>").click(function(){
+        //Star over here. Add Again button so the user can take the quiz again.
+
+    });
+}
+
 //***************** TIMER START ***********************
 function preTimer() {
     myTimer = setInterval(function (){startTimer()}, 1000);
@@ -65,6 +78,9 @@ function startTimer(){
     }
 }
 
+function stopTimer(){
+    clearInterval(myTimer);
+}
 //***************** TIMER END ***********************
 
 function loadPage(){
@@ -82,13 +98,18 @@ function checkAnswer(){
     //if correct
     if(answerArray == tQuestions[questionCounter].correctAnswer){
         console.log("Yes, you picked the right answer!");
+        correct++;
         $("#MessageText").html("<i class= 'fa fa-thumbs-o-up messageTextWin' aria-hidden='true'></i>"+"  Yes, that's" +
             " correct!"); //add correct message
+        $("#Correct").html("Correct: " +correct);
+        $("#Wrong").html("Wrong: " +wrong);
 
-        //time = 10; //reset time
+        stopTimer();
+        time = 10; //reset time
         //add next button for next question
         $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Next </button>").click(function(){
             console.log("You clicked the submit button!");
+            //Check to see if the bank of questions is finished.
             if(questionCounter > tQuestions.length){
                 //show the results.
                 console.log("Finished!");
@@ -111,6 +132,9 @@ function checkAnswer(){
         $("#MessageText").html("<i class= 'fa fa-thumbs-o-down messageTextWin' aria-hidden='true'></i>" + "  Sorry" +
             " the answer is " +tQuestions[questionCounter].correctAnswer);
         wrong ++;
+        $("#Correct").html("Correct: " +correct);
+        $("#Wrong").html("Wrong: " +wrong);
+        stopTimer();
         time = 10; //reset time
         //add next button and server next question
         $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Next </button>").click(function(){
@@ -138,13 +162,15 @@ function serveQuestion(){
     $("#A").click(function(){
         answerArray.push(tQuestions[questionCounter].answers.a);
         //checkAnswer();
-        }).html("<input type='radio' name='a' value='a'>" +"   " +tQuestions[questionCounter].answers.a) + "</input>";
+        }).html("<button class = 'answerButton'>" +"   " +tQuestions[questionCounter].answers.a) + "</button>";
+    //<input type='radio' name='a' value='a'>" +"   " +tQuestions[questionCounter].answers.a) + "</input>
 
     $("#B").click( function () {
             answerArray.push(tQuestions[questionCounter].answers.b);
             //checkAnswer();
     }
-    ).html("<input type = 'radio' name='b' value ='b'>" +"   " +tQuestions[questionCounter].answers.b)+ "</input>";
+    ).html("");
+    //<input type = 'radio' name='b' value ='b'>" +"   " +tQuestions[questionCounter].answers.b)+ "</input>
 
     $("#C").click(function(){
         answerArray.push(tQuestions[questionCounter].answers.c);
