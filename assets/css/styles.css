@@ -7,6 +7,24 @@ body{
 h1{
     width: 100%;
 }
+br{
+
+    line-height: 50%;
+
+}
+
+.progressBarBottom{
+
+    width: 500px;
+    color: aliceblue;
+}
+
+.progressBarTop{
+
+    width: 500px;
+    height: 25px;
+    color: greenyellow;
+}
 
 .answerButton{
     background-color: #4b74c7;
@@ -18,14 +36,19 @@ h1{
     color: white;
     padding-right: 10px;
     /*padding: 15px 32px;*/
-    text-align: left;
+    text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 22px;
     font-family: 'Tenor Sans', sans-serif;
     border-radius: 8px;
+    vertical-align: middle;
 }
-.answerButton:hover{transform: scale(1.01);}
+.answerButton:hover{
+    transform: scale(1.01);
+    border-color: #2f4ac7;
+
+}
 
 
 .titleText{
@@ -46,6 +69,7 @@ h1{
     font-size: 25px;
     color: white;
     text-align: center;
+    display:block;
 }
 
 .gameTimerTextQuestion{
@@ -71,6 +95,15 @@ h1{
 }
 .buttonProperties:hover {
     transform: scale(1.05);
+    cursor: hand;
+}
+
+.percentComplete{
+    font-family: 'Tenor Sans', sans-serif ;
+    font-size: 13px;
+    color: white;
+
+
 }
 /*transition: all .2s ease-in-out;*/
 

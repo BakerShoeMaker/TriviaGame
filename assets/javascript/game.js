@@ -1,9 +1,3 @@
-var score = 0, correct = 0, wrong =0, time = 10,
-    questionCounter= 0; //counts the questions.
-
-var myTimer;
-var answerArray = [];
-
 var tQuestions = [
     {question: "What days do we attend class?",
         answers: {
@@ -15,7 +9,7 @@ var tQuestions = [
         correctAnswer: "Tuesday, Thursday, and Saturday"
         //correctAnswer: tQuestions[0].answers
     },
-    {question: "What languages have we learned so far",
+    {question: "What languages have we learned so far?",
         answers: {
             a:"javascript",
             b: "actionscript",
@@ -35,6 +29,13 @@ var tQuestions = [
     }
 ];
 
+var score = 0, correct = 0, wrong =0, time = 10,
+    questionCounter= 0; //counts the questions.
+var numberOfProblems = tQuestions.length;
+var progressBarValue = questionCounter / numberOfProblems;
+var myTimer;
+var answerArray = [];
+
 //Resets all the variables.
 function reset(){
     correct = 0;
@@ -49,6 +50,8 @@ function resetAnswerArray(){answerArray = [];}
 function progressBar(){
 
 }
+
+
 //Show results
 function showResults(){
     $(".answer").html(""); //Clear the answers
@@ -69,10 +72,13 @@ function preTimer() {
 
 }
 function startTimer(){
+        $("#Time").empty();
         time --;
         $("#Time").html(time);
+        //Add off() for buttons and next button.
 
     if(time ==0){
+        $("#Time").html("Time's up!");
         clearInterval(myTimer);
 
     }
@@ -94,13 +100,15 @@ function loadPage(){
 
 function checkAnswer(){
     $(".answer").off(); //turn off ability to click
-
+    $(".answer").empty();
+    $("#Time").empty();
     //if correct
     if(answerArray == tQuestions[questionCounter].correctAnswer){
+        console.log("What's in the answers array?: " +answerArray);
         console.log("Yes, you picked the right answer!");
         correct++;
-        $("#MessageText").html("<i class= 'fa fa-thumbs-o-up messageTextWin' aria-hidden='true'></i>"+"  Yes, that's" +
-            " correct!"); //add correct message
+        $("#MessageText").html("<i class= 'fa fa-thumbs-o-up messageTextWin' aria-hidden='true'></i>"+"  Yes, "
+            +" ' " +tQuestions[questionCounter].correctAnswer +"' is correct!"); //add correct message
         $("#Correct").html("Correct: " +correct);
         $("#Wrong").html("Wrong: " +wrong);
 
@@ -108,15 +116,20 @@ function checkAnswer(){
         time = 10; //reset time
         //add next button for next question
         $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Next </button>").click(function(){
-            console.log("You clicked the submit button!");
+
             //Check to see if the bank of questions is finished.
             if(questionCounter > tQuestions.length){
-                //show the results.
                 console.log("Finished!");
+                //show the results.
+                // $("#time").empty();
+                // $("#Correct").empty();
+                // $("#Wrong").empty();
+                // $("#MessageText").html("Total correct: " +correct +"<br>");
             }
             else{
                 //show next question
                 console.log("not finished yet!");
+                stopTimer();
                 questionCounter++;
                 serveQuestion();
                 console.log("The question counter is: " +questionCounter);
@@ -145,47 +158,54 @@ function checkAnswer(){
         });
 
     }
-    console.log("Question counter =  " +questionCounter);
 }
 
 //Add submit button, push all clicks into an array, to check correct answer get the last item pushed into the array.
 
 //Displays the questions/answers
 function serveQuestion(){
+    console.log("--------------------------- NEW QUESTION --------------------------------------------")
+    console.log("FROM INSIDE THE SERVEQUESTION FUNCTION: Question counter =  " +questionCounter);
+    console.log("Current question: " +tQuestions[questionCounter].question );
+    console.log("Current answer: " +tQuestions[questionCounter].correctAnswer);
 
-    //progressBar();
-    console.log(tQuestions.length);
+    resetAnswerArray();
+
     $("#Correct").html("Correct: " +correct);
     $("#Wrong").html("Wrong: " +wrong);
+    $("#ProgressBar").html("<p class='percentComplete'>% Complete</p><br>"
+        +"<div class='progress'> <div class='progress-bar bg-success' role= 'progressbar' "
+        + "style= 'width: 5%' aria-valuenow='25' aria-valuemin='0'" +
+        "aria-valuemax='100'></div></div>");
+
     $("#Question").html(tQuestions[questionCounter].question);
     $("#MessageText").html("");
     $("#A").click(function(){
         answerArray.push(tQuestions[questionCounter].answers.a);
-        //checkAnswer();
+        checkAnswer();
         }).html("<button class = 'answerButton'>" +"   " +tQuestions[questionCounter].answers.a) + "</button>";
     //<input type='radio' name='a' value='a'>" +"   " +tQuestions[questionCounter].answers.a) + "</input>
 
     $("#B").click( function () {
             answerArray.push(tQuestions[questionCounter].answers.b);
-            //checkAnswer();
+            checkAnswer();
     }
-    ).html("");
-    //<input type = 'radio' name='b' value ='b'>" +"   " +tQuestions[questionCounter].answers.b)+ "</input>
+    ).html("<buttton class = 'answerButton'>" +" " +tQuestions[questionCounter].answers.b) +"</button>";
 
     $("#C").click(function(){
         answerArray.push(tQuestions[questionCounter].answers.c);
-        //checkAnswer();
-        }).html("<input type = 'radio' name='c' value ='c'>" +"   " +tQuestions[questionCounter].answers.c) +"</input>";
+        checkAnswer();
+        }).html("<buttton class = 'answerButton'>" +" " +tQuestions[questionCounter].answers.c) +"</button>";
 
     $("#D").click(function () {
         answerArray.push(tQuestions[questionCounter].answers.d);
-        //checkAnswer();
-        }).html("<input type = 'radio' name='d' value ='d'>" +"   " +tQuestions[questionCounter].answers.d)+"</input>";
-
-    $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Submit </button>").click(function(){
-        console.log("You clicked the submit button!");
         checkAnswer();
-    });
+        }).html("<buttton class = 'answerButton'>" +" " +tQuestions[questionCounter].answers.d) +"</button>"
+
+    // $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Submit </button>").click(function(){
+    //     console.log("You clicked the submit button!");
+    //     checkAnswer();
+    // });
 
     preTimer();
 }
