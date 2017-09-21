@@ -1,10 +1,9 @@
 # TriviaGame
 This is a basic trivia game using js and jQuery.
 
-OBJECT OF THE GAME: The
-
 TECHNOLOGIES USED: HTML, CSS, javascript, jquery, BootStrap 4, Google Fonts, and Font Awesome.
 
-GENERAL COMMENTS: Everytime the user wins or loses 
+GENERAL COMMENTS: I've added a progress bar that tracks the number of questions completed.
 
-CHALLENGES: T
+CHALLENGES: My initial challenge was how to store the questions. Having a better understanding of objects in javascript
+I decided to put the questions in a basic javascript object.
