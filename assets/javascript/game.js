@@ -112,12 +112,10 @@ function loadPage(){
 function checkIfFinished(){
     console.log("QC first in checkFinished: " +questionCounter);
     console.log("QC tQuestions: " +((tQuestions.length) -1));
-    console.log("question counter is: " +typeof +questionCounter);
-    console.log("tQuestions is a: " + typeof tQuestions.length);
-    var sample = parseInt(tQuestions[0]);
-    console.log("convert: " +sample);
+
 
     if(questionCounter == tQuestions.length){
+    //if(questionCounter == ((tQuestions.length) -1)){
         console.log("Finished!");
         //show the results.
         // $("#time").empty();
