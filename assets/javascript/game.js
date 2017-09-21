@@ -118,7 +118,7 @@ function checkAnswer(){
         $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Next </button>").click(function(){
 
             //Check to see if the bank of questions is finished.
-            if(questionCounter > tQuestions.length){
+            if(questionCounter >= tQuestions.length){
                 console.log("Finished!");
                 //show the results.
                 // $("#time").empty();
@@ -164,7 +164,7 @@ function checkAnswer(){
 
 //Displays the questions/answers
 function serveQuestion(){
-    console.log("--------------------------- NEW QUESTION --------------------------------------------")
+    console.log("------------ NEW QUESTION ------------  ")
     console.log("FROM INSIDE THE SERVEQUESTION FUNCTION: Question counter =  " +questionCounter);
     console.log("Current question: " +tQuestions[questionCounter].question );
     console.log("Current answer: " +tQuestions[questionCounter].correctAnswer);

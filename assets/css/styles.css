@@ -96,6 +96,7 @@ br{
 .buttonProperties:hover {
     transform: scale(1.05);
     cursor: hand;
+    cursor: pointer;
 }
 
 .percentComplete{
