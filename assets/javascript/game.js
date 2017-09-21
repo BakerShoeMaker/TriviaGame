@@ -38,13 +38,26 @@ var tQuestions = [
     }
 ];
 
-var score = 0, correct = 0, wrong =0, time = 10,
+var score = 0, correct = 0, wrong =0, time = 15,
     questionCounter= 0; //counts the questions.
 var numberOfProblems = tQuestions.length;
 //var progressBarValue = questionCounter / numberOfProblems;
 var progressBarValue = (.75 * 100) +"%";
 var myTimer;
 var answerArray = [];
+
+//Using progressbarjs
+// var semiCircle = new ProgressBar.SemiCircle('#ProgressBar', {
+//     color: '#9ffc74',
+//     duration: 15000,
+//     trailColor: '#f4f4f4',
+//     strokeWidth: 4
+// }, function(){
+// console.log("Progress bar is finished!");
+// }
+//
+// );
+
 
 //Resets all the variables.
 function reset(){
@@ -55,12 +68,17 @@ function reset(){
 
 function resetAnswerArray(){answerArray = [];}
 
+//----------------- PROGRESS BAR JS SAMPLE ------------------------
 
 //Make a basic progress bar for the time.
-function progressBar(){
+// function progressBar(){
+//
+//     semiCircle.animate(1);
+//     //if(semiCircle.duration == 3){semiCircle.stop()}
+// }
+//console.log(semiCircle._duration);
 
-}
-
+//----------------- PROGRESS BAR JS SAMPLE END ------------------------
 
 //Show results
 function showResults(){
@@ -149,7 +167,7 @@ function checkAnswer(){
         $("#Wrong").html("Wrong: " +wrong);
 
         stopTimer();
-        time = 10; //reset time
+        time = 15; //reset time
         //add next button for next question
         $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Next </button>").click(function(){
             //Check to see if the bank of questions is finished.
@@ -196,13 +214,14 @@ function serveQuestion(){
 
     $("#Correct").html("Correct: " +correct);
     $("#Wrong").html("Wrong: " +wrong);
+    //progressBar();
     $("#ProgressBar").html("<p class='percentComplete'>% Complete</p><br>"
         +"<div class='progress'> <div class='progress-bar bg-success' role= 'progressbar' "
         + "style= 'width: 50%' aria-valuenow='25' aria-valuemin='0'" +
         "aria-valuemax='100'></div></div>")
 
-    //'width:' +progressBarValue +'%'
-    //'width:50%'
+    'width:' +progressBarValue +'%'
+    'width:50%'
 
     $("#Question").html(tQuestions[questionCounter].question);
     $("#MessageText").html("");

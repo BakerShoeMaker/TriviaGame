@@ -50,7 +50,6 @@ br{
 
 }
 
-
 .titleText{
     font-family: 'Tenor Sans', sans-serif;
     font-size: 65px;
@@ -106,6 +105,11 @@ br{
 .buttonAlignment{
 
     display: block;
+}
+
+.progressBar{
+
+    height: 100px;
 }
 /*transition: all .2s ease-in-out;*/
 
