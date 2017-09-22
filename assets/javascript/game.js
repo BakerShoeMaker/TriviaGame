@@ -29,20 +29,57 @@ var tQuestions = [
     },
     {question: "Which of the following is a function body in javascript?",
         answers: {
-            a:"var(){}",
-            b: "function var()[]",
-            c: "var function[]",
-            d: "function(){}"
+            a:"var(){  }",
+            b: "function var()[  ]",
+            c: "var function[  ]",
+            d: "function(){  }"
         },
-        correctAnswer: "function(){}"
+        correctAnswer: "function(){  }"
+    },
+    {question: "Pick the letter below that best describes how to declare a variable in javascript:",
+        answers: {
+            a:"var myVariable: ",
+            b: "function var()[myVariable ]",
+            c: "var myVariable",
+            d: "var (myVariable)"
+        },
+        correctAnswer: "var myVariable"
+    },
+    {question: "The expression, 'var m = [a, b, c, d]' is best described as ",
+        answers: {
+            a:"a method function",
+            b: "a method",
+            c: "a static variable",
+            d: "an array"
+        },
+        correctAnswer: "an array"
+    },
+    {question: "The following is example of a for loop",
+        answers: {
+            a:"for(i=0){//do something}",
+            b: "for(var i=0; i<5; i++){//do something}",
+            c: "for(i=0 ; [i]){//do something}",
+            d: "function for(i=0){//do something}"
+        },
+        correctAnswer: "for(var i=0; i<5; i++){//do something}"
+    },
+    {question: "One of benefits of an API it that it allows",
+        answers: {
+            a:"developers to communicate methods easier.",
+            b: "users to login quicker.",
+            c: "backend developers to deploy websites",
+            d: "communication between other websites."
+        },
+        correctAnswer: "communication between other websites."
     }
 ];
 
 var score = 0, correct = 0, wrong =0, time = 15,
     questionCounter= 0; //counts the questions.
 var numberOfProblems = tQuestions.length;
-var progressBarValue = questionCounter / numberOfProblems;
-//var progressBarValue = (.25 * 100) +"%";
+var problemsCompleted = 0;
+var progressBarValue =  problemsCompleted/ numberOfProblems * 100 +"%";
+
 var myTimer;
 var answerArray = [];
 
@@ -153,6 +190,8 @@ function checkIfFinished(){
 }
 
 function checkAnswer(){
+    problemsCompleted++;
+    console.log(progressBarValue);
     $(".answer").off(); //turn off ability to click
     $(".answer").empty();
     $("#Time").empty();
@@ -193,7 +232,6 @@ function checkAnswer(){
             console.log("You clicked the submit button!");
             console.log("The question counter is: " +questionCounter);
             //questionCounter++;
-            //serveQuestion();
             checkIfFinished();
             removeNextButton();
         });
@@ -205,7 +243,11 @@ function removeNextButton(){
 
     $("#SubmitButton").empty();
 }
+function updateProgressBar(){
+    problemsCompleted++;
+    progressBarValue =  problemsCompleted/ numberOfProblems * 100 +"%";
 
+}
 //Add submit button, push all clicks into an array, to check correct answer get the last item pushed into the array.
 
 //Displays the questions/answers
@@ -222,11 +264,11 @@ function serveQuestion(){
 
     $("#Correct").html("Correct: " +correct);
     $("#Wrong").html("Wrong: " +wrong);
-    //progressBar();
+    updateProgressBar();
     $("#ProgressBar").html("<p class='percentComplete'>% Complete</p><br>"
         +"<div class='progress'> <div class='progress-bar bg-success' role= 'progressbar' "
         + "style= 'width:" + progressBarValue +"' aria-valuenow='25' aria-valuemin='0'" +
-        "aria-valuemax='100'></div></div>")
+        "aria-valuemax='100'></div></div>");
 
     //'width:' +progressBarValue +'%'
     //'width:50%'

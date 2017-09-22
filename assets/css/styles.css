@@ -47,6 +47,8 @@ br{
 .answerButton:hover{
     transform: scale(1.01);
     border-color: #2f4ac7;
+    cursor: hand;
+    cursor: pointer;
 
 }
 
