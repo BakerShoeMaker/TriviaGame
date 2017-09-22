@@ -41,8 +41,8 @@ var tQuestions = [
 var score = 0, correct = 0, wrong =0, time = 15,
     questionCounter= 0; //counts the questions.
 var numberOfProblems = tQuestions.length;
-//var progressBarValue = questionCounter / numberOfProblems;
-var progressBarValue = (.75 * 100) +"%";
+var progressBarValue = questionCounter / numberOfProblems;
+//var progressBarValue = (.25 * 100) +"%";
 var myTimer;
 var answerArray = [];
 
@@ -130,7 +130,7 @@ function loadPage(){
 function checkIfFinished(){
     console.log("QC first in checkFinished: " +questionCounter);
     console.log("QC tQuestions: " +((tQuestions.length) -1));
-
+    console.log("Question:" , tQuestions[questionCounter]);
 
     if(questionCounter == tQuestions.length){
     //if(questionCounter == ((tQuestions.length) -1)){
@@ -145,7 +145,7 @@ function checkIfFinished(){
         //show next question
         console.log("not finished yet!");
         stopTimer();
-        questionCounter = questionCounter +1;
+        questionCounter ++;
         serveQuestion();
         console.log("QC when not finished: "  +questionCounter);
         console.log("QC tQuestions: " +((tQuestions.length) -1));
@@ -157,9 +157,10 @@ function checkAnswer(){
     $(".answer").empty();
     $("#Time").empty();
     //if correct
+    console.log("check answer");
     if(answerArray == tQuestions[questionCounter].correctAnswer){
         // console.log("What's in the answers array?: " +answerArray);
-        // console.log("Yes, you picked the right answer!");
+        console.log("Yes, you picked the right answer!");
         correct++;
         $("#MessageText").html("<i class= 'fa fa-thumbs-o-up messageTextWin' aria-hidden='true'></i>"+"  Yes, "
             +" ' " +tQuestions[questionCounter].correctAnswer +"' is correct!"); //add correct message
@@ -172,6 +173,7 @@ function checkAnswer(){
         $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Next </button>").click(function(){
             //Check to see if the bank of questions is finished.
             checkIfFinished();
+            removeNextButton();
           });
     }
     else{
@@ -193,9 +195,15 @@ function checkAnswer(){
             //questionCounter++;
             //serveQuestion();
             checkIfFinished();
+            removeNextButton();
         });
 
     }
+}
+
+function removeNextButton(){
+
+    $("#SubmitButton").empty();
 }
 
 //Add submit button, push all clicks into an array, to check correct answer get the last item pushed into the array.
@@ -217,34 +225,34 @@ function serveQuestion(){
     //progressBar();
     $("#ProgressBar").html("<p class='percentComplete'>% Complete</p><br>"
         +"<div class='progress'> <div class='progress-bar bg-success' role= 'progressbar' "
-        + "style= 'width: 50%' aria-valuenow='25' aria-valuemin='0'" +
+        + "style= 'width:" + progressBarValue +"' aria-valuenow='25' aria-valuemin='0'" +
         "aria-valuemax='100'></div></div>")
 
-    'width:' +progressBarValue +'%'
-    'width:50%'
+    //'width:' +progressBarValue +'%'
+    //'width:50%'
 
     $("#Question").html(tQuestions[questionCounter].question);
     $("#MessageText").html("");
     $("#A").click(function(){
         answerArray.push(tQuestions[questionCounter].answers.a);
         checkAnswer();
-        }).html("<button class = 'answerButton'>" +"   " +tQuestions[questionCounter].answers.a) + "</button>";
+        }).html("<button class = 'answerButton '>" +"   " +tQuestions[questionCounter].answers.a) + "</button>";
     //<input type='radio' name='a' value='a'>" +"   " +tQuestions[questionCounter].answers.a) + "</input>
 
     $("#B").click( function () {
             answerArray.push(tQuestions[questionCounter].answers.b);
             checkAnswer();
-    }).html("<buttton class = 'answerButton'>" +" " +tQuestions[questionCounter].answers.b) +"</button>";
+    }).html("<buttton class = 'answerButton '>" +" " +tQuestions[questionCounter].answers.b) +"</button>";
 
     $("#C").click(function(){
         answerArray.push(tQuestions[questionCounter].answers.c);
         checkAnswer();
-        }).html("<buttton class = 'answerButton'>" +" " +tQuestions[questionCounter].answers.c) +"</button>";
+        }).html("<buttton class = 'answerButton '>" +" " +tQuestions[questionCounter].answers.c) +"</button>";
 
     $("#D").click(function () {
         answerArray.push(tQuestions[questionCounter].answers.d);
         checkAnswer();
-        }).html("<buttton class = 'answerButton'>" +" " +tQuestions[questionCounter].answers.d) +"</button>"
+        }).html("<buttton class = 'answerButton '>" +" " +tQuestions[questionCounter].answers.d) +"</button>"
 
     // $("#SubmitButton").html("<button type='button' class='buttonProperties'>  Submit </button>").click(function(){
     //     console.log("You clicked the submit button!");
